@@ -3,10 +3,12 @@ import { User } from "./schemas/user.schema";
 import { Model } from "mongoose";
 import { InjectModel } from "@nestjs/mongoose";
 import { UserDto } from "./dto/user.dto";
+import { UserRoles } from "../user_roles/schema/user-roles.schema";
 
 @Injectable()
 export class UserService {
-  constructor(@InjectModel(User.name) private readonly userModel: Model<User>) {
+  constructor(@InjectModel(User.name) private readonly userModel: Model<User>,
+              @InjectModel(UserRoles.name) private readonly userRoleModel: Model<UserRoles>) {
   }
 
   // function to create user
@@ -42,5 +44,10 @@ export class UserService {
   // function to delete user
   async deleteUser(id: string): Promise<any> {
     return this.userModel.findByIdAndDelete(id);
+  }
+
+  // function to get users based on user role
+  async viewUsersOnUserRole(id: string): Promise<any> {
+    return this.userRoleModel.findById(id).exec();
   }
 }
