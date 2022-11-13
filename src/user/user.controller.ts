@@ -21,7 +21,7 @@ export class UserController {
     const newUser = this.userService.create(user);
 
     newUser.then((res) => {
-      if (res.surname == 0) {
+      if (res.success == 0) {
         response.status(400).json(newUser);
       } else {
         if (!res) {
@@ -156,6 +156,38 @@ export class UserController {
         response.status(200).json({
           success: 1,
           message: "Successfully deleted user."
+        });
+      }
+    }).catch((err) => {
+      response.status(500).json({
+        success: 0,
+        message: "Internal server error.",
+        error: err
+      });
+    });
+  }
+
+  @Get("view-user-role/:id")
+  async viewBasedOnUserRole(@Param("id") id: string, @Res() response) {
+    if (id.length != 24) {
+      response.status(404).json({
+        success: 0,
+        message: "Required fields missing."
+      });
+      return;
+    }
+
+    this.userService.viewUsersOnUserRole(id).then((res) => {
+      if (!res) {
+        response.status(400).json({
+          success: 0,
+          message: "Could not retrieve users."
+        });
+      } else {
+        response.status(200).json({
+          success: 1,
+          message: "Successfully retrieved users.",
+          data: res
         });
       }
     }).catch((err) => {
