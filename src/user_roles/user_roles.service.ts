@@ -15,7 +15,7 @@ export class UserRolesService {
     // first check user role in database
     const checkRole = await this.userRoleModel.find({ name: userRoleDto.name }).exec();
 
-    if (checkRole.length > 1) {
+    if (checkRole.length > 0) {
       return {
         success: 0,
         message: "User role already exists."
@@ -43,5 +43,4 @@ export class UserRolesService {
   async deleteOne(id: string): Promise<any> {
     return await this.userRoleModel.deleteOne({ _id: id }).exec();
   }
-
 }
