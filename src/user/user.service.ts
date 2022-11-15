@@ -16,7 +16,7 @@ export class UserService {
 
     // check if user has been created before
     const checkUser = await this.userModel.find({ email: user.email }).exec();
-    if (checkUser.length > 1) {
+    if (checkUser.length > 0) {
       return {
         success: 0,
         message: "User already exists. Please choose another email or login."

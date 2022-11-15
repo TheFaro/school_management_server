@@ -18,7 +18,7 @@ export class StudentsService {
       student_contact: student.student_contact
     }).exec();
 
-    if (checking.length > 1) {
+    if (checking.length > 0) {
       return {
         success: 0,
         message: "Student has already been registered."

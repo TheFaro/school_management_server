@@ -13,7 +13,7 @@ export class ClassnameService {
   async addNewClass(body: ClassnameDto): Promise<any> {
     const checking = await this.classnameModel.find({ name: body.name });
 
-    if (checking.length > 1) {
+    if (checking.length > 0) {
       return {
         success: 0,
         message: "Class already exists."

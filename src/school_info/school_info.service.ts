@@ -16,7 +16,7 @@ export class SchoolInfoService {
     // check if school is registered
     const checking = await this.schoolInfoModel.find({ email: school.email }).exec();
 
-    if (checking.length > 1) {
+    if (checking.length > 0) {
       return {
         success: 0,
         message: "School has already been registered. Log in instead."
