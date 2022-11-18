@@ -1,4 +1,4 @@
-import { Prop, Schema } from "@nestjs/mongoose";
+import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Subjects } from "../../subjects/schema/subjects.schema";
 import mongoose from "mongoose";
 import { Teacher } from "../../teacher/schema/teacher.schema";
@@ -12,3 +12,5 @@ export class SubjectTeacher {
   teacher_id: Teacher;
 
 }
+
+export const SubjectTeacherSchema = SchemaFactory.createForClass(SubjectTeacher);
