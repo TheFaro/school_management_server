@@ -9,9 +9,10 @@ import { StudentsModule } from './students/students.module';
 import { ClassnameModule } from './classname/classname.module';
 import { TeacherModule } from './teacher/teacher.module';
 import { ClassTeacherModule } from './class_teacher/class_teacher.module';
+import { DepartmentsModule } from './departments/departments.module';
 
 @Module({
-  imports: [UserModule, MongooseModule.forRoot("mongodb://localhost/school_management_server"), UserRolesModule, SchoolInfoModule, StudentsModule, ClassnameModule, TeacherModule, ClassTeacherModule],
+  imports: [UserModule, MongooseModule.forRoot("mongodb://localhost/school_management_server"), UserRolesModule, SchoolInfoModule, StudentsModule, ClassnameModule, TeacherModule, ClassTeacherModule, DepartmentsModule],
   controllers: [AppController],
   providers: [AppService]
 })
