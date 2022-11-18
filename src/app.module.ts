@@ -12,9 +12,10 @@ import { ClassTeacherModule } from './class_teacher/class_teacher.module';
 import { DepartmentsModule } from './departments/departments.module';
 import { HeadOfDepartmentModule } from './head_of_department/head_of_department.module';
 import { SubjectsModule } from './subjects/subjects.module';
+import { SubjectTeacherModule } from './subject_teacher/subject_teacher.module';
 
 @Module({
-  imports: [UserModule, MongooseModule.forRoot("mongodb://localhost/school_management_server"), UserRolesModule, SchoolInfoModule, StudentsModule, ClassnameModule, TeacherModule, ClassTeacherModule, DepartmentsModule, HeadOfDepartmentModule, SubjectsModule],
+  imports: [UserModule, MongooseModule.forRoot("mongodb://localhost/school_management_server"), UserRolesModule, SchoolInfoModule, StudentsModule, ClassnameModule, TeacherModule, ClassTeacherModule, DepartmentsModule, HeadOfDepartmentModule, SubjectsModule, SubjectTeacherModule],
   controllers: [AppController],
   providers: [AppService]
 })
