@@ -34,7 +34,7 @@ export class SubjectsService {
     return this.subjectsModel.findById(id).exec();
   }
 
-  async updateSubjec(id: string, body: SubjectsDto): Promise<any> {
+  async updateSubject(id: string, body: SubjectsDto): Promise<any> {
     return this.subjectsModel.findByIdAndUpdate(id, body).exec();
   }
 
