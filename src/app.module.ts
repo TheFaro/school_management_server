@@ -14,9 +14,10 @@ import { HeadOfDepartmentModule } from './head_of_department/head_of_department.
 import { SubjectsModule } from './subjects/subjects.module';
 import { SubjectTeacherModule } from './subject_teacher/subject_teacher.module';
 import { ClassStudentModule } from './class_student/class_student.module';
+import { MarksModule } from './marks/marks.module';
 
 @Module({
-  imports: [UserModule, MongooseModule.forRoot("mongodb://localhost/school_management_server"), UserRolesModule, SchoolInfoModule, StudentsModule, ClassnameModule, TeacherModule, ClassTeacherModule, DepartmentsModule, HeadOfDepartmentModule, SubjectsModule, SubjectTeacherModule, ClassStudentModule],
+  imports: [UserModule, MongooseModule.forRoot("mongodb://localhost/school_management_server"), UserRolesModule, SchoolInfoModule, StudentsModule, ClassnameModule, TeacherModule, ClassTeacherModule, DepartmentsModule, HeadOfDepartmentModule, SubjectsModule, SubjectTeacherModule, ClassStudentModule, MarksModule],
   controllers: [AppController],
   providers: [AppService]
 })
