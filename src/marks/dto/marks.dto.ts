@@ -3,4 +3,5 @@ export class MarksDto {
   readonly mark: string;
   readonly subjectTeacherId: string;
   readonly month: string;
+  readonly year: string;
 }
