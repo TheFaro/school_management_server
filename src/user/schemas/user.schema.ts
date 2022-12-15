@@ -1,10 +1,9 @@
-import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import mongoose from "mongoose";
-import { UserRoles } from "../../user_roles/schema/user-roles.schema";
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import mongoose from 'mongoose';
+import { UserRoles } from '../../user_roles/schema/user-roles.schema';
 
 @Schema({ timestamps: true })
 export class User {
-
   @Prop()
   name: string;
 
@@ -17,8 +16,11 @@ export class User {
   @Prop()
   email: string;
 
-  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: "UserRoles" })
+  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'UserRoles' })
   user_role: UserRoles;
+
+  @Prop()
+  password: string;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

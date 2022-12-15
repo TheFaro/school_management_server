@@ -1,4 +1,4 @@
-import { UserRoles } from "../../user_roles/schema/user-roles.schema";
+import { UserRoles } from '../../user_roles/schema/user-roles.schema';
 
 export class UserDto {
   readonly name: string;
@@ -7,5 +7,6 @@ export class UserDto {
   readonly email: string;
   readonly schoolName: string;
   readonly schoolRegion: string;
+  password: string;
   readonly userRole: UserRoles;
 }
