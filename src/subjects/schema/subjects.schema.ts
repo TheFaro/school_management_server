@@ -1,8 +1,8 @@
-import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import mongoose from "mongoose";
-import { Departments } from "../../departments/schema/departments.schema";
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import mongoose from 'mongoose';
+import { Departments } from '../../departments/schema/departments.schema';
 
-@Schema()
+@Schema({ timestamps: true })
 export class Subjects {
   @Prop()
   name: string;
@@ -11,7 +11,7 @@ export class Subjects {
   department_id: Departments;
 
   @Prop()
-  level: string;  // Secondary or High School
+  level: string; // secondary or high_school
 }
 
 export const SubjectsSchema = SchemaFactory.createForClass(Subjects);
