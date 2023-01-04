@@ -23,6 +23,8 @@ export class UserRolesService {
         success: 0,
         message: 'User role already exists.',
       };
+
+      // throw new Error('User role already exists.');
     }
     return await this.userRoleModel.create(userRoleDto);
   }
@@ -39,11 +41,25 @@ export class UserRolesService {
 
   // function to update a user role
   async updateOne(id: string, userRoleDto: UserRoleDto): Promise<any> {
-    return this.userRoleModel.findByIdAndUpdate(id, userRoleDto, { new: true });
+    const role = await this.userRoleModel.findByIdAndUpdate(id, userRoleDto, {
+      new: true,
+    });
+
+    if (!role) {
+      throw new Error('User role does not exist.');
+    }
+
+    return role;
   }
 
   // function to delete user role
   async deleteOne(id: string): Promise<any> {
-    return await this.userRoleModel.deleteOne({ _id: id }).exec();
+    const role = await this.userRoleModel.deleteOne({ _id: id }).exec();
+
+    if (role.deletedCount == 0) {
+      throw new Error('User role does not exist. Delete failed.');
+    }
+
+    return role;
   }
 }
