@@ -10,13 +10,13 @@ import {
 } from '@nestjs/common';
 import { SubjectsService } from './subjects.service';
 import { Response } from 'express';
-import { SubjectsDto } from './dto/subjects.dto';
+import { SubjectsArrayDto, SubjectsDto } from './dto/subjects.dto';
 
 @Controller('subjects')
 export class SubjectsController {
   constructor(private readonly subjectsService: SubjectsService) {}
 
-  @Post()
+  @Post('register')
   async createSubject(@Body() body: SubjectsDto, @Res() response: Response) {
     if (!body.name || !body.departmentId || !body.level) {
       response.status(404).json({
@@ -44,6 +44,37 @@ export class SubjectsController {
               data: res,
             });
           }
+        }
+      })
+      .catch((err) => {
+        response.status(500).json({
+          success: 0,
+          message: 'Internal server error.',
+          error: err,
+        });
+      });
+  }
+
+  @Post('register-array')
+  async createSubjectArray(
+    @Body() body: SubjectsArrayDto,
+    @Res() response: Response,
+  ) {
+    if (body.subjects.length <= 0) {
+      response.status(404).json({
+        success: 0,
+        message: 'Required fields missing.',
+      });
+      return;
+    }
+
+    this.subjectsService
+      .createSubjectsArray(body.subjects)
+      .then((res) => {
+        if (res.success == 0) {
+          response.status(400).json(res);
+        } else {
+          response.status(200).json(res);
         }
       })
       .catch((err) => {

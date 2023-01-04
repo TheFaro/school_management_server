@@ -30,7 +30,7 @@ export class ClassnameService {
   async addClassArray(classes: [ClassnameDto]): Promise<any> {
     let created = false;
     for (let i = 0; i < classes.length; i++) {
-      console.info(`${typeof classes[i]}`);
+      // console.info(`${typeof classes[i]}`);
       this.classnameModel.create(classes[i]);
       if (created == false) created = true;
     }
